@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brain clay</title>
+    <link rel="stylesheet" href="arm.css">
+    <link rel="icon" href="./images/brain.png" type="image/x-icon">
+</head>
+<body>
+    <img src="./images/logo.jpg" alt="Logo" class="logo" onclick="window.location.href='https://www.radboudumc.nl/patientenzorg'">
+
+    <link rel="stylesheet" href="brain.css">
+
+    <h1>Brain clay</h1>
+
+    <h2>Instructions</h2>
+    <p>In this exercise, you will interact with a 3D model of the brain. The goal is to drag every object in the correct place on the Ventricle model. Once you have placed an object 
+        in the correct position in the correct rotation, it will snap to that position and you won't be able to move it anymore.
+        If you want to zoom in on the 3D model, click the "Zoom" button. This will enlarge the 3D model to fill the screen, allowing you to see it in more detail.
+        If you get stuck you can consult the final result image below to see how the objects should be placed.
+    </p>
+    <h3>Controls</h3>
+    <ul>
+        <li>Click and drag the objects to move them.</li>
+        <li>Use the Left and Right arrow key to rotate the objects either clockwise or counterclockwise respectively.</li>
+        <li>Use the scrollwheel to zoom in or out.</li>
+        <li>Use the right mouse button to pan the view.</li>
+        <li>Use shift + drag to move the view.</li>
+    </ul>
+
+    <div class="threeD-object"> 
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.15/build/spline-viewer.js"></script>
+        <spline-viewer url="https://prod.spline.design/5UaGGvZHQft4lQB6/scene.splinecode"></spline-viewer>
+    </div>
+
+    <button id="zoomBtn" onclick="zoom3D()">Zoom</button>
+    <button id="exitZoomBtn" onclick="exitZoom()" style="display: none;">Exit Zoom</button>
+    
+
+    <p>Here is what the final result should look like: </p>
+
+    <p>From the side:</p>
+    <img src="./images/side.png" alt="Final result" class="side">
+    <br>
+    <p>From the front:</p>
+    <img src="./images/front.png" alt="Final result" class="front">
+    <p>From the back:</p>
+    <img src="./images/back.png" alt="Final result" class="back">
+</body>
+
+<script>
+    function zoom3D() {
+        const object = document.querySelector('.threeD-object');
+        object.classList.add('fullscreen');
+    
+        document.getElementById('zoomBtn').style.display = 'none';
+        document.getElementById('exitZoomBtn').style.display = 'inline-block';
+    }
+    
+    function exitZoom() {
+        const object = document.querySelector('.threeD-object');
+        object.classList.remove('fullscreen');
+    
+        document.getElementById('zoomBtn').style.display = 'inline-block';
+        document.getElementById('exitZoomBtn').style.display = 'none';
+    }
+    </script>
+    
+    
+</html>
